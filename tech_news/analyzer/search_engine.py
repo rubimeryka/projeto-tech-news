@@ -14,15 +14,12 @@ def search_by_date(date):
     try:
         iso_format = datetime.strptime(date, "%Y-%m-%d")
         date_in_format = iso_format.strftime("%d/%m/%Y")
-        
         search = search_news({"timestamp": {"$regex": date_in_format}})
-        
         list_of_news = [(news["title"], news["url"]) for news in search]
-        
         return list_of_news
-    
     except ValueError:
         raise ValueError("Data inválida")
+
 
 # Requisito 9
 def search_by_category(category):
