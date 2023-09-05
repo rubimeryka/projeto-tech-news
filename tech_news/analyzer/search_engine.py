@@ -5,8 +5,8 @@ from datetime import datetime
 # Requisito 7
 def search_by_title(title):
     search_results = search_news({"title": {"$regex": title, "$options": "i"}})
-    list_news = [(news["title"], news["url"]) for news in search_results]
-    return list_news
+    lis_of_news = [(news["title"], news["url"]) for news in search_results]
+    return lis_of_news
 
 
 # Requisito 8
@@ -26,5 +26,6 @@ def search_by_date(date):
 
 # Requisito 9
 def search_by_category(category):
-    """Seu código deve vir aqui"""
-    raise NotImplementedError
+    search = search_news({"category": {"$regex": category, "$options": "i"}})
+    list_of_news = [(news["title"], news["url"]) for news in search]
+    return list_of_news
